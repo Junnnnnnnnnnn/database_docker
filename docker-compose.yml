@@ -26,8 +26,7 @@ services:
       - app
     volumes:
       - ../redis_data:/data # Redis 데이터가 저장될 경로를 볼륨에 매핑
-    command: ["redis-server", "--appendonly", "yes"] # AOF 활성화 (데이터 복구를 위해)
-
+    command: ["redis-server", "--appendonly", "yes", "--notify-keyspace-events", "Ex"]
 
 networks:
   app:
