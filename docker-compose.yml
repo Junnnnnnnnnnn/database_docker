@@ -38,8 +38,16 @@ services:
     networks:
       - app
     volumes:
-      - ../redis_data:/data # Redis 데이터가 저장될 경로를 볼륨에 매핑
-    command: ["redis-server", "--appendonly", "yes", "--notify-keyspace-events", "Ex"]
+    - type: bind
+      source: ../redis_data
+      target: /data
+      read_only: false
+    command: [
+      "redis-server",
+      "--appendonly", "yes",
+      "--notify-keyspace-events", "Ex",
+      "--slave-read-only", "no"
+    ]
 
 networks:
   app:
