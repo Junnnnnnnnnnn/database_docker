@@ -68,7 +68,7 @@ services:
     command: [
       "redis-server",
       "--appendonly", "yes",
-      "--notify-keyspace-events", "Ex",
+      "--notify-keyspace-events", "KEA",  # 여기를 Ex에서 KEA로 변경
       "--slave-read-only", "no"
     ]
 
